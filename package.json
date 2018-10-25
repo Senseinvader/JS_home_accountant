@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
     "hapi": "^17.6.0",
+    "mocha": "^5.2.0",
     "moment": "^2.22.2",
+    "mongoose": "^5.3.6",
     "pg": "^7.5.0"
   }
 }
