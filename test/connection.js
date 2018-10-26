@@ -4,12 +4,18 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://localhost/accountant');
 
-before(function(done){
-  mongoose.connection.once('open', function() {
+before((done)=> {
+  mongoose.connection.once('open', ()=> {
     console.log('DB connection has been established');
     done();
-  }).on('error', function(error) {
+  }).on('error', (error)=> {
     console.log('Connection error: ', error);
+  });
+});
+
+beforeEach((done)=> {
+  mongoose.connection.collections.expenses.drop(()=> {
+    done();
   });
 });
 
