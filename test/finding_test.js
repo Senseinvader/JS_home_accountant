@@ -4,8 +4,10 @@ const Expense = require('../model/Expense');
 
 describe('Finding records', function() {
 
+  let newExpence;
+
   beforeEach(function(done){
-    var newExpence = new Expense({
+    newExpence = new Expense({
       amount: 100,
       date: Date.parse("11/30/2011"),
       comment: 'No comment',
@@ -23,4 +25,12 @@ describe('Finding records', function() {
      done();
    });
   });
+
+  it('Finds one record bu ID in the database', function(done) {
+    Expense.findOne({_id: newExpence._id}).then(function(result) {
+      assert.equal(result._id.toString(), newExpence._id.toString());
+      done();
+    });
+   });
+
 });
