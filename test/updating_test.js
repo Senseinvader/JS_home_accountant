@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const Expense = require('../model/Expense');
 
-describe('Deleting records', function() {
+describe('Updating records', function() {
 
   let newExpence;
 
@@ -18,16 +18,14 @@ describe('Deleting records', function() {
     });
   });
   
-  it('Deletes one record from the database', function(done) {
-   Expense.findOneAndRemove({date: Date.parse("11/30/2011")}).then(()=> {
-    Expense.findOne({date : Date.parse("11/30/2011")}).then((result)=> {
-      assert.equal(result, null);
-      done();
-    });
-   });
+  it('Updates one record in the database', function(done) {
+    Expense.findOneAndUpdate({amount : 100}, {amount : 150}).then(()=> {
+      Expense.findOne({_id : newExpence._id}).then((result)=> {
+        assert.equal(result.amount, 150);
+        done();
+      })
+    })
   });
 
 
 });
-
-//

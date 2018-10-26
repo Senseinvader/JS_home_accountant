@@ -1,4 +1,4 @@
-const mocha = require('mocha');
+
 const assert = require('chai').assert;
 const Expense = require('../model/Expense');
 
@@ -14,7 +14,6 @@ describe('Finding records', function() {
       category: 'Food'
     });
     newExpence.save().then(function() {
-      assert(!newExpence.isNew);
       done();
     });
   });
